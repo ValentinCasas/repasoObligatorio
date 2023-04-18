@@ -1,10 +1,12 @@
 package usuario.example.tpanexoa.misActividades;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,6 +60,18 @@ public class ListaActividadesAdapter extends RecyclerView.Adapter<ListaActividad
                 transaction.commit();
             }
         });
+
+        holder.btnDetalleActividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abrir la vista de detalles de la actividad
+                Intent intent = new Intent(context, ActividadFragment.class);
+                Bundle args = new Bundle();
+                args.putSerializable("actividad", actividad);
+                intent.putExtras(args);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -68,12 +82,14 @@ public class ListaActividadesAdapter extends RecyclerView.Adapter<ListaActividad
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView nombre, fecha, hora;
+        Button btnDetalleActividad;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.tvNombreActividad);
             fecha = itemView.findViewById(R.id.tvFecha);
             hora = itemView.findViewById(R.id.tvHora);
+            btnDetalleActividad = itemView.findViewById(R.id.btnDetalleActividad);
         }
     }
 }
