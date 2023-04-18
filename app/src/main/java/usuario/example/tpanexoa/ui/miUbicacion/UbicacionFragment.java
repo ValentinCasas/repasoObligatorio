@@ -19,12 +19,10 @@ import usuario.example.tpanexoa.databinding.FragmentUbicacionBinding;
 public class UbicacionFragment extends Fragment {
 
     private UbicacionViewModel mViewModel;
-
+    private FragmentUbicacionBinding binding;
     public static UbicacionFragment newInstance() {
         return new UbicacionFragment();
     }
-
-    private FragmentUbicacionBinding binding;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {

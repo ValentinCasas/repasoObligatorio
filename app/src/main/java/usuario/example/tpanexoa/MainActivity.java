@@ -35,9 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
                 viewModel.setUsuario(username);
                 viewModel.setContrasenia(password);
-                //viewModel.Validado()
-                //Nota: Sacar este logica de if
-                if (true) {
+
+                if (viewModel.Validado()) {
                     // Las credenciales son válidas, continuar con la siguiente actividad
                     Intent intent = new Intent(MainActivity.this, MiMenu.class);
                     startActivity(intent);
@@ -47,5 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 }
