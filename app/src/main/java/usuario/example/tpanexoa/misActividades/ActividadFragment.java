@@ -21,6 +21,9 @@ public class ActividadFragment extends Fragment {
     private TextView nombreActividadTextView;
     private TextView fechaActividadTextView;
     private TextView horaActividadTextView;
+    private TextView detalleActividadTextView;
+    private TextView lugarActividadTextView;
+
 
     private Actividad actividad;
 
@@ -35,14 +38,14 @@ public class ActividadFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            actividad = (Actividad) getArguments().getSerializable("actividad");
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            actividad = (Actividad) getArguments().getSerializable("actividad");
+        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_actividad, container, false);
     }
@@ -54,6 +57,8 @@ public class ActividadFragment extends Fragment {
         nombreActividadTextView = view.findViewById(R.id.tvNombreActividad);
         fechaActividadTextView = view.findViewById(R.id.tvFecha);
         horaActividadTextView = view.findViewById(R.id.tvHora);
+        detalleActividadTextView = view.findViewById(R.id.tvDescripcionActividad);
+        lugarActividadTextView = view.findViewById(R.id.tvLugarDetalle);
 
         if (actividad != null) {
             nombreActividadTextView.setText(actividad.getNombre());

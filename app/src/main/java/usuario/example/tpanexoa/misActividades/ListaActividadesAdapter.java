@@ -61,17 +61,6 @@ public class ListaActividadesAdapter extends RecyclerView.Adapter<ListaActividad
             }
         });
 
-        holder.btnDetalleActividad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Abrir la vista de detalles de la actividad
-                Intent intent = new Intent(context, ActividadFragment.class);
-                Bundle args = new Bundle();
-                args.putSerializable("actividad", actividad);
-                intent.putExtras(args);
-                context.startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -90,6 +79,20 @@ public class ListaActividadesAdapter extends RecyclerView.Adapter<ListaActividad
             fecha = itemView.findViewById(R.id.tvFecha);
             hora = itemView.findViewById(R.id.tvHora);
             btnDetalleActividad = itemView.findViewById(R.id.btnDetalleActividad);
+
+            btnDetalleActividad.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Abrir la vista de detalles de la actividad
+                    Intent intent = new Intent(context, ActividadFragment.class);
+                    Bundle args = new Bundle();
+                    args.putSerializable("actividad", actividades.get(getAdapterPosition()));
+                    intent.putExtras(args);
+                    context.startActivity(intent);
+                }
+            });
         }
+
+
     }
 }
