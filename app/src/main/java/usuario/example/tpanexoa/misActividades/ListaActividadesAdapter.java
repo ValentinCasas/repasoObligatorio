@@ -1,8 +1,10 @@
 package usuario.example.tpanexoa.misActividades;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -46,6 +49,7 @@ public class ListaActividadesAdapter extends RecyclerView.Adapter<ListaActividad
         holder.nombre.setText(actividad.getNombre());
         holder.fecha.setText(new SimpleDateFormat("dd/MM/yyyy").format(actividad.getFecha()));
         holder.hora.setText(actividad.getHora());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,11 +88,13 @@ public class ListaActividadesAdapter extends RecyclerView.Adapter<ListaActividad
                 @Override
                 public void onClick(View v) {
                     // Abrir la vista de detalles de la actividad
-                    Intent intent = new Intent(context, ActividadFragment.class);
+
                     Bundle args = new Bundle();
                     args.putSerializable("actividad", actividades.get(getAdapterPosition()));
-                    intent.putExtras(args);
-                    context.startActivity(intent);
+                    Log.d("salida" , args+"");
+                    Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_mi_menu).navigate(R.id.action_nav_misActividades_to_actividadFragment, args);
+
+
                 }
             });
         }

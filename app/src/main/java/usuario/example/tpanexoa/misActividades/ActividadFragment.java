@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 
 import usuario.example.tpanexoa.Models.Actividad;
 import usuario.example.tpanexoa.R;
+import usuario.example.tpanexoa.databinding.FragmentActividadBinding;
+import usuario.example.tpanexoa.databinding.FragmentGalleryBinding;
 
 public class ActividadFragment extends Fragment {
 
@@ -23,6 +25,8 @@ public class ActividadFragment extends Fragment {
     private TextView horaActividadTextView;
     private TextView detalleActividadTextView;
     private TextView lugarActividadTextView;
+
+    private FragmentActividadBinding binding;
 
 
     private Actividad actividad;
@@ -38,32 +42,44 @@ public class ActividadFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //if (getArguments() != null) {
+
+        //}
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        binding = FragmentActividadBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
         if (getArguments() != null) {
-            actividad = (Actividad) getArguments().getSerializable("actividad");
+        actividad = (Actividad) getArguments().getSerializable("actividad");
+        binding.tvLugarDetalle.setText(actividad.getLugar());
         }
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_actividad, container, false);
+        return root;
     }
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        nombreActividadTextView = view.findViewById(R.id.tvNombreActividad);
-        fechaActividadTextView = view.findViewById(R.id.tvFecha);
+        /*nombreActividadTextView = view.findViewById(R.id.tvNombreActividad);
+        //fechaActividadTextView = view.findViewById(R.id.tvFecha);
         horaActividadTextView = view.findViewById(R.id.tvHora);
         detalleActividadTextView = view.findViewById(R.id.tvDescripcionActividad);
         lugarActividadTextView = view.findViewById(R.id.tvLugarDetalle);
 
         if (actividad != null) {
             nombreActividadTextView.setText(actividad.getNombre());
-            fechaActividadTextView.setText(new SimpleDateFormat("dd/MM/yyyy").format(actividad.getFecha()));
+            //fechaActividadTextView.setText(new SimpleDateFormat("dd/MM/yyyy").format(actividad.getFecha()));
             horaActividadTextView.setText(actividad.getHora());
-        }
+            detalleActividadTextView.setText(actividad.getDescripcion());
+            lugarActividadTextView.setText(actividad.getLugar());
+        }*/
     }
 }
