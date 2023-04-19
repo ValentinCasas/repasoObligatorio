@@ -25,10 +25,7 @@
             android:id="@+id/nav_miMusica"
             android:icon="@android:drawable/ic_lock_silent_mode_off"
             android:title="musica" />
-        <item
-            android:id="@+id/nav_misActividades"
-            android:icon="@android:drawable/presence_online"
-            android:title="mis actividades" />
+
         <item
             android:id="@+id/nav_salirFragment"
             android:icon="@android:drawable/ic_delete"
